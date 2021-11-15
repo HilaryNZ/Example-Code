@@ -1,8 +1,8 @@
-R stats projects
+# R stats projects
 
 Example Comparative analysis between different data types between treatment groups
 
-Data Types
+# Data Types
 •	Lipid profile for 5 brain regions 
 •	Gene Expression for specific set of genes (Nano String) for 5 brain regions
 •	SCFA for 1 gut region
