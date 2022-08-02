@@ -1,3 +1,5 @@
+
+
 getwd()
 setwd("Put dir path here")  # set dir
 
@@ -7,19 +9,24 @@ library(dplyr)
 library(mixOmics)
 library(igraph)
 
-#####################
+#####################  Data cleaning for statistical analysis #######################
+
+#Short Chain Fatty Acid data
 SCFA <- data.frame(read.delim(file="SCFA_file.txt", sep="\t"))
 rownames(SCFA) <- SCFA[,1]
 SCFA <- SCFA[,2:ncol(SCFA)]
 
+#Plasma lipid data
 PLipid <- data.frame(read.delim(file="PlasmaLipids_file.txt", sep="\t"))
 rownames(PLipid) <- PLipid[,1]
 PLipid <- PLipid[,2:ncol(PLipid)]
 
+#descripted behaviour data
 Behav <- data.frame(read.delim(file="Behaviour_file.txt", sep="\t"))
 rownames(Behav) <- Behav[,1]
 Behav <- Behav[,2:ncol(Behav)]
 
+###### nRNA gene expression data for 5 brain regions  ############
 NS_R1 <- data.frame(read.delim(file="NanoString_Gene_Epression_Region_1.txt", sep="\t"))
 rownames(NS_R1) <- NS_R1[,1]
 NS_R1 <- NS_R1[,2:ncol(NS_R1)]
@@ -40,6 +47,7 @@ NS_R5 <- data.frame(read.delim(file="NanoString_Gene_Epression_Region_5.txt", se
 rownames(NS_R5) <- NS_R5[,1]
 NS_R5 <- NS_R5[,2:ncol(NS_R5)]
 
+######## Brain Lipid metabolomics data from 5 regions  ##########
 Lipid_R1 <- data.frame(read.delim(file="Region_1_Lipid.txt", sep="\t"))
 rownames(Lipid_R1) <- Lipid_R1[,1]
 Lipid_R1 <- Lipid_R1[,2:ncol(Lipid_R1)]
@@ -60,6 +68,7 @@ Lipid_R5 <- data.frame(read.delim(file="Region_5_Lipid.txt", sep="\t"))
 rownames(Lipid_R5) <- Lipid_R5[,1]
 Lipid_R5 <- Lipid_R5[,2:ncol(Lipid_R5)]
 
+# Ceacal microbiotia DNA data, indentified at Genus level
 L6 <- data.frame(read.delim(file="ncbi_genus.txt", sep="\t"))
 rownames(L6) <- L6[,1]
 L6 <- L6[,2:ncol(L6)]
@@ -86,7 +95,7 @@ L6.micro <- L6.micro[rownames(L6.micro) != "environmental samples <bacteria,supe
 L6.micro <- prop.table(as.matrix(L6.micro),2)
 dim(L6.micro)
 
-# remove animal data to match all datasets 
+# removel of sample animal data to match all datasets 
 ### L6 Taxa
 L6.micro <- L6.micro[, colnames(L6) != "sub_01"]  # subject number  
 L6.micro <- L6.micro[, colnames(L6.micro) != "sub_11"]  
@@ -320,7 +329,7 @@ colnames(L6.micro)
 
 table(mapping.micro$Treatment)
 
-###############
+###############         Statistical analysis ####################
 
 colnames(L6.micro) <- mapping.micro$RatID
 colnames(L6.micro)
