@@ -1,6 +1,7 @@
 # R stats projects
 
-Example Comparative analysis between different data types between treatment groups
+This contains examples of R code used for comparative analysis between different data types and treatment groups.
+
 
 # Data Types
 •	Lipid profile for 5 brain regions 
