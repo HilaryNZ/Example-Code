@@ -17,6 +17,8 @@ library(FSA)
 library(edgeR)
 library(metagenomeSeq)
 
+################ cleaning data for analysis  ####################
+
 mapping <- data.frame(read.delim(file="_microbiome_mapping.txt", sep="\t",stringsAsFactors=F))
 mapping <- mapping[order(mapping[,1]),]
 head(mapping)
@@ -54,6 +56,7 @@ colnames(L2)
 table(mapping$Description)
 
 ############
+#################  examining data for areas of interest  ###################
 
 plot.micro <- L2
 plot.names <- strsplit2(rownames(plot.micro),";")
