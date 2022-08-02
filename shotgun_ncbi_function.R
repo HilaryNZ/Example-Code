@@ -42,6 +42,10 @@ mapping <- data.frame(read.delim(file="_microbiome_mapping.txt", sep="\t",string
 mapping <- mapping[order(mapping[,1]),]
 head(mapping)
 
+
+################# Data cleaning for statistical analysis    ###########################
+
+
 #############
 ############# Functional analysis (genes are assigned to functional roles)
 ############
@@ -99,7 +103,7 @@ write.table(SEED.L4_3, file = paste("_SEED_matrix.txt",sep=""), sep = "\t", row.
 
 ###########################
 #############
-############# Pathway analysis
+############# Pathway analysis  
 ############
 
 KEGG <- data.frame(read.delim(file="_ncbi_KEGG_L4.txt", sep="\t"))
@@ -188,6 +192,9 @@ colSums(BRITE.L4)
 colnames(BRITE.L4_3)
 
 write.table(BRITE.L4_3, file = paste("_BRITE_matrix.txt",sep=""), sep = "\t", row.names = FALSE, quote = FALSE)
+
+
+############# Plotting data at higher level to look for areas of interest
 
 ############################
 ############################  SEED   (SL2)
@@ -399,7 +406,7 @@ dev.off()
 
 
 
-
+################  Closer examination of areas of interest  ##############################
 
 #######################
 #######################  SEED examination of larger functions SEED.L4
